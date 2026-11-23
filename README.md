@@ -12,18 +12,23 @@
 
 非技术背景 / 只是想快点用上的话，不用敲任何命令：
 
-1. 打开 [Releases](https://github.com/comeonzhj/wechat-style-finetune/releases) 下载最新的 `wechat-style-finetune-v1.0.0.zip`
-2. 双击解压，得到一个 `wechat-style-finetune` 文件夹（Windows 上叫 `公众号文风微调` 也可以）
-3. 双击里面的 **`启动.command`**
+**推荐：下载 `.dmg`**
 
-第一次会自动准备环境（约 2 分钟，走国内镜像），之后每次都是秒开，浏览器会自动打开界面。
+1. 打开 [Releases](https://github.com/comeonzhj/wechat-style-finetune/releases)，下载 `wechat-style-finetune-1.0.0.dmg`
+2. 双击打开，把「公众号文风微调」拖进 Applications
+3. 双击启动 → 会弹出一个终端窗口显示进度，浏览器自动打开界面
 
-> 如果 macOS 提示「无法打开，因为来自身份不明的开发者」：右键点 `启动.command` → 选「打开」→ 再点「打开」。
-> 这是苹果对未签名软件的默认拦截，不是文件有问题。
+> 这个包已经用 Developer ID 签名并完成 Apple 公证（notarized），**双击即可，不会弹「无法验证开发者」**。
 
-包里还附了 `使用说明.txt`，讲得更啰嗦一点。
+**备用：下载 zip**
 
----
+适合想直接看源码、或者不想让它装进「应用程序」的人：
+
+1. 下载 `wechat-style-finetune-v1.0.0.zip` 并解压
+2. 双击文件夹里的 `启动.command`
+3. 首次会被 macOS 拦一次：右键点它 → 选「打开」→ 再点「打开」
+
+第一次启动都会自动准备环境（约 2 分钟，走国内镜像），之后每次秒开。
 
 ## 为什么需要它
 

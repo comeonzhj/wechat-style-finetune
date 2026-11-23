@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公众号文风微调</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/theme.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">文</span>
+    <div>
+      <div class="brand-title">公众号文风微调</div>
+      <div class="brand-sub">本地训练 · 数据不出本机</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#/home" data-nav="home">原理</a>
+    <a href="#/import" data-nav="import">导入</a>
+    <a href="#/clean" data-nav="clean">清洗</a>
+    <a href="#/articles" data-nav="articles">语料</a>
+    <a href="#/train" data-nav="train">训练</a>
+    <a href="#/config" data-nav="config">配置</a>
+  </nav>
+  <div class="topbar-right">
+    <span id="sg-jobpill" class="sg-jobs hidden" title="查看运行中的任务"><span class="sg-dot" id="sg-jobdot"></span><span id="sg-jobtext">任务</span></span>
+    <span id="health" class="pill pill-mute">连接中…</span>
+  </div>
+</header>
+
+<main id="view"></main>
+
+<div id="drawer" class="drawer hidden">
+  <div class="drawer-head">
+    <div>
+      <div class="drawer-title">运行中 <span id="job-ratio" class="mono"></span></div>
+      <div id="job-sub" class="small muted"></div>
+    </div>
+    <div class="row">
+      <button id="job-stop" class="btn btn-ghost btn-sm">停止</button>
+      <button id="job-close" class="btn btn-ghost btn-sm">收起</button>
+    </div>
+  </div>
+  <div class="progress"><div id="job-bar"></div></div>
+  <div id="job-log" class="log"></div>
+</div>
+
+<div id="sg-panel" class="sg-panel hidden">
+  <div class="sg-panel-head">
+    <span class="sg-dot run"></span>
+    <b id="sg-panel-title">任务进度</b>
+    <span class="grow"></span>
+    <button class="btn btn-ghost btn-sm" id="sg-panel-close">收起</button>
+  </div>
+  <div class="sg-panel-log" id="sg-panel-log"></div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="/static/app.js"></script>
+<script src="/static/studio.js"></script>
+</body>
+</html>

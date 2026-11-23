@@ -1,0 +1,205 @@
+/* 主题层：在 style.css 之后加载，只覆盖视觉，不改结构。
+   参考 zed.dev：近白底、发丝分隔线、衬线斜体大标题、克制的主色、等宽小字标签。 */
+
+:root{
+  --bg:#fafaf9;
+  --surface:#ffffff;
+  --surface-2:#f6f6f4;
+  --line:#e4e4e0;
+  --line-2:#efefec;
+  --ink:#17181a;
+  --ink-2:#3b3d40;
+  --muted:#71747a;
+  --accent:#2e5be8;
+  --accent-soft:#eef2ff;
+  --ok:#0a7c53;
+  --ok-soft:#e9f6f0;
+  --warn:#a8571a;
+  --warn-soft:#fdf4e9;
+  --bad:#b3261e;
+  --bad-soft:#fdeceb;
+  --radius:8px;
+  --serif:"Songti SC","Noto Serif SC",Georgia,"Times New Roman",serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+
+body{
+  background:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,.045) 1px, transparent 0) 0 0/22px 22px,
+    var(--bg);
+  color:var(--ink);
+}
+
+/* ---------- 顶栏 ---------- */
+.topbar{
+  background:rgba(250,250,249,.92);
+  backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--line);
+  gap:28px;
+  padding:0 28px;
+  height:60px;
+}
+.brand .mark{
+  width:26px;height:26px;border-radius:6px;
+  background:var(--ink);color:#fff;
+  font-family:var(--serif);font-size:15px;font-style:italic;
+  display:flex;align-items:center;justify-content:center;
+}
+.brand-title{font-size:14.5px;font-weight:650;letter-spacing:-.01em}
+.brand-sub{font-size:11.5px;color:var(--muted)}
+.nav{gap:2px}
+.nav a{
+  color:var(--ink-2);font-size:13px;padding:6px 10px;border-radius:6px;
+  text-decoration:none;
+}
+.nav a:hover{background:var(--surface-2);text-decoration:none}
+.nav a.active{color:var(--ink);background:var(--surface-2);font-weight:600}
+#health{font-family:var(--mono);font-size:11px}
+
+/* ---------- 页面骨架 ---------- */
+main#view{
+  max-width:1120px;margin:0 auto;padding:32px 28px 96px;
+}
+.page-head{
+  border-bottom:1px solid var(--line);
+  padding-bottom:18px;margin-bottom:26px;
+  display:flex;align-items:flex-end;gap:16px;
+}
+.page-title{
+  font-family:var(--serif);font-style:italic;
+  font-size:30px;line-height:1.15;font-weight:400;letter-spacing:-.01em;
+}
+.page-desc{color:var(--muted);font-size:13px;margin-top:6px;max-width:660px}
+
+/* ---------- 卡片：只留发丝线 ---------- */
+.card,.sg-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:none;
+}
+.card-title,.sg-h{font-size:14.5px;font-weight:650;letter-spacing:-.005em}
+.card-desc,.sg-sub{color:var(--muted);font-size:12.5px}
+.divider{border-color:var(--line)}
+
+/* ---------- 按钮 ---------- */
+.btn{
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--ink);
+  border-radius:6px;font-size:13px;height:32px;padding:0 12px;
+  transition:background .12s,border-color .12s;
+}
+.btn:hover{background:var(--surface-2);border-color:#d7d7d2}
+.btn-primary{
+  background:var(--accent);border-color:var(--accent);color:#fff;
+}
+.btn-primary:hover{background:#274fd0;border-color:#274fd0}
+.btn-ghost{background:transparent;border-color:transparent;color:var(--muted)}
+.btn-ghost:hover{background:var(--surface-2);color:var(--ink)}
+.btn-sm{height:27px;font-size:12px;padding:0 9px}
+.btn-danger{background:var(--bad);border-color:var(--bad);color:#fff}
+
+/* ---------- 标签 / 状态 ---------- */
+.pill{
+  border-radius:4px;font-size:11px;padding:1px 7px;
+  font-family:var(--mono);letter-spacing:.01em;
+  border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);
+}
+.pill-ok{background:var(--ok-soft);border-color:#cfe9dd;color:var(--ok)}
+.pill-warn{background:var(--warn-soft);border-color:#f3e0c9;color:var(--warn)}
+.pill-bad{background:var(--bad-soft);border-color:#f6d5d2;color:var(--bad)}
+.pill-accent{background:var(--accent-soft);border-color:#d8e2ff;color:var(--accent)}
+.pill-mute{color:var(--muted)}
+
+/* ---------- 表单 ---------- */
+input[type=text],input[type=number],input[type=password],select,textarea,
+.sg-input,.sg-ta{
+  border:1px solid var(--line);border-radius:6px;background:var(--surface);
+  font-size:13px;color:var(--ink);
+}
+input:focus,select:focus,textarea:focus,.sg-input:focus,.sg-ta:focus{
+  outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);
+}
+.field-label{font-size:11.5px;color:var(--muted);font-family:var(--mono);margin-bottom:5px}
+
+/* ---------- 日志 ---------- */
+.log,.sg-log{
+  background:#131518;color:#ccd3dc;border-radius:6px;
+  font-family:var(--mono);font-size:11.5px;line-height:1.7;
+}
+
+/* ---------- 抽屉 / 悬浮任务面板 ---------- */
+.drawer{
+  border-left:1px solid var(--line);background:var(--surface);
+  box-shadow:none;
+}
+.drawer-head{border-bottom:1px solid var(--line)}
+.progress{background:var(--line-2);border-radius:2px;height:4px}
+.progress>div{background:var(--accent);height:4px}
+
+/* 顶栏里的任务指示灯 */
+.sg-jobs{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  border:1px solid var(--line);border-radius:6px;padding:4px 9px;
+  font-size:12px;background:var(--surface);color:var(--ink-2);
+}
+.sg-jobs:hover{background:var(--surface-2)}
+.sg-dot{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block}
+.sg-dot.run{background:var(--accent);animation:sg-pulse 1.4s infinite}
+@keyframes sg-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* 右侧任务浮层 */
+.sg-panel{
+  position:fixed;right:18px;bottom:18px;width:min(520px,calc(100vw - 36px));
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 12px 32px rgba(15,18,24,.10);
+  z-index:60;overflow:hidden;
+}
+.sg-panel.hidden{display:none}
+.sg-panel-head{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  border-bottom:1px solid var(--line);font-size:12.5px;
+}
+.sg-panel-log{height:240px;overflow:auto;padding:10px 12px;font-family:var(--mono);
+  font-size:11.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all;color:#cfd6df;background:#131518}
+
+/* ---------- 原理页 ---------- */
+.sg-hero{
+  border-bottom:1px solid var(--line);padding:56px 0 40px;margin-bottom:8px;text-align:center;
+}
+.sg-eyebrow{
+  font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;
+}
+.sg-hero h1{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:46px;line-height:1.12;margin:14px 0 16px;letter-spacing:-.015em;
+  color:var(--accent);
+}
+.sg-hero p{color:var(--ink-2);font-size:14.5px;max-width:600px;margin:0 auto 26px;line-height:1.75}
+.sg-tri{
+  display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);margin:36px 0;
+}
+.sg-tri>div{padding:20px 22px;border-right:1px solid var(--line)}
+.sg-tri>div:last-child{border-right:0}
+.sg-tri h3{margin:0 0 6px;font-size:13.5px;font-weight:650}
+.sg-tri p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.7}
+.sg-flow{
+  display:flex;align-items:stretch;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  margin:28px 0;background:var(--surface);
+}
+.sg-flow>div{flex:1;padding:16px 18px;border-right:1px solid var(--line)}
+.sg-flow>div:last-child{border-right:0}
+.sg-flow .n{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:6px}
+.sg-flow .t{font-size:13px;font-weight:600;margin-bottom:4px}
+.sg-flow .d{font-size:12px;color:var(--muted);line-height:1.65}
+.sg-spec{
+  border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden;margin:28px 0;
+}
+.sg-spec table{width:100%;border-collapse:collapse;font-size:12.5px}
+.sg-spec th,.sg-spec td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line-2)}
+.sg-spec th{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:500}
+.sg-spec tr:last-child td{border-bottom:0}
+.sg-start{display:flex;align-items:center;gap:14px;margin:32px 0 8px;justify-content:center}
+.sg-start .hint{font-size:12px;color:var(--muted)}
