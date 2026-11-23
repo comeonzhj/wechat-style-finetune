@@ -109,7 +109,7 @@
 ## 快速开始
 
 ```bash
-git clone https://github.com/<you>/wechat-style-finetune.git
+git clone https://github.com/comeonzhj/wechat-style-finetune.git
 cd wechat-style-finetune
 ./setup.sh      # 只装 mlx-lm，走国内镜像，约 2 分钟
 ./start.sh      # 自动打开 http://127.0.0.1:8765
