@@ -12,8 +12,8 @@
 
 非技术背景 / 只是想快点用上的话，不用敲任何命令：
 
-1. 打开 [Releases](https://github.com/comeonzhj/wechat-style-finetune/releases) 下载最新的 `公众号文风微调-v1.0.0.zip`
-2. 双击解压，得到文件夹
+1. 打开 [Releases](https://github.com/comeonzhj/wechat-style-finetune/releases) 下载最新的 `wechat-style-finetune-v1.0.0.zip`
+2. 双击解压，得到一个 `wechat-style-finetune` 文件夹（Windows 上叫 `公众号文风微调` 也可以）
 3. 双击里面的 **`启动.command`**
 
 第一次会自动准备环境（约 2 分钟，走国内镜像），之后每次都是秒开，浏览器会自动打开界面。

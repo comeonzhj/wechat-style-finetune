@@ -30,12 +30,14 @@ def should_skip(path: Path) -> bool:
 
 def main():
     version = sys.argv[1] if len(sys.argv) > 1 else "1.0.0"
-    out = ROOT.parent / f"公众号文风微调-v{version}.zip"
+    # 外层用 ASCII 名字：部分下载/解压工具对中文文件名处理不一致，包内再保留中文
+    root_name = "wechat-style-finetune"
+    out = ROOT.parent / f"{root_name}-v{version}.zip"
     files = sorted(p for p in ROOT.rglob("*") if p.is_file() and not should_skip(p))
 
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for p in files:
-            arc = str(p.relative_to(ROOT))
+            arc = root_name + "/" + str(p.relative_to(ROOT))
             info = zipfile.ZipInfo(arc)
             mode = p.stat().st_mode
             info.external_attr = (mode & 0xFFFF) << 16
