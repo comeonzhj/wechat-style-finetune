@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ArticleBrief",
+  "description": "内容骨架：供通用写手从零写出同主题、同信息量、不同声音的文章。事实保真，表达去风格化。",
+  "type": "object",
+  "required": [
+    "topic",
+    "target_reader",
+    "speaker",
+    "structure_mode",
+    "sections",
+    "keep_terms",
+    "cta",
+    "length_target"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "topic": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "中性主题名，不含修辞"
+    },
+    "target_reader": {
+      "type": "string",
+      "description": "谁、在什么处境下读这篇"
+    },
+    "speaker": {
+      "type": "object",
+      "required": ["position", "first_person_claims"],
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "type": "string",
+          "description": "作者以什么身份说话，只填原文能支撑的"
+        },
+        "first_person_claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["claim", "kind"],
+            "additionalProperties": false,
+            "properties": {
+              "claim": {
+                "type": "string",
+                "description": "中性化后的第一人称经历/观察/判断"
+              },
+              "kind": {
+                "type": "string",
+                "enum": ["个人操作", "个人判断", "个人观察", "个人关系"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "structure_mode": {
+      "type": "string",
+      "enum": ["flow", "sectioned", "heavily_sectioned"]
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "order",
+          "function",
+          "topic_line",
+          "min_chars",
+          "claims",
+          "facts",
+          "punchline_intent",
+          "thin"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "order": {"type": "integer", "minimum": 1},
+          "function": {
+            "type": "string",
+            "enum": [
+              "开场钩子",
+              "设置问题",
+              "给结论",
+              "概念澄清",
+              "拆解步骤",
+              "举证",
+              "对比",
+              "反驳",
+              "转折",
+              "补充限制",
+              "收尾",
+              "行动引导"
+            ]
+          },
+          "topic_line": {"type": "string", "description": "一句话讲这节讲什么，陈述句"},
+          "min_chars": {"type": "integer", "minimum": 20},
+          "claims": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string"}
+          },
+          "facts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["content", "kind"],
+              "additionalProperties": false,
+              "properties": {
+                "content": {"type": "string"},
+                "kind": {
+                  "type": "string",
+                  "enum": ["数据", "案例", "个人操作", "引用他人", "定义", "时间线", "价格"]
+                }
+              }
+            }
+          },
+          "example_hint": {"type": "string"},
+          "punchline_intent": {
+            "type": "string",
+            "description": "这节想让人记住的点，大白话，不许金句"
+          },
+          "thin": {
+            "type": "boolean",
+            "description": "素材不足以撑起该节篇幅（原文靠修辞/重复撑）"
+          }
+        }
+      }
+    },
+    "keep_terms": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "cta": {
+      "type": "object",
+      "required": ["exists", "kind", "message"],
+      "additionalProperties": false,
+      "properties": {
+        "exists": {"type": "boolean"},
+        "kind": {
+          "type": "string",
+          "enum": ["报名", "扫码", "关注", "评论", "转发", "无"]
+        },
+        "message": {"type": "string"}
+      }
+    },
+    "length_target": {"type": "integer", "minimum": 100},
+    "image_slots": {"type": "integer", "minimum": 0}
+  }
+}

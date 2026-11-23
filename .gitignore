@@ -1,0 +1,16 @@
+# 本地数据（都是你的，不进仓库）
+my-articles/
+data/
+mlx-data/
+adapters/
+logs/
+models/
+output/
+
+# 运行时
+.venv-mlx/
+.env
+__pycache__/
+*.pyc
+.DS_Store
+*.log
